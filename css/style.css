@@ -1,0 +1,221 @@
+@charset "utf-8";
+@import url('https://fonts.googleapis.com/css2?family=Roboto:wght@300;400;500;700&display=swap');
+
+* {
+    padding: 0; margin: 0;
+    font-family: 'Roboto', sans-serif;
+    box-sizing: border-box;
+}
+
+body { background-color: #fff; color: #111; }
+a { color: inherit; text-decoration: none; }
+
+/* --- HEADER & NAVIGASI --- */
+header {
+    background-color: rgba(255, 255, 255, 0.95);
+    backdrop-filter: blur(10px);
+    padding: 15px 0;
+    position: sticky; top: 0; z-index: 1000;
+    border-bottom: 1px solid #f0f0f0;
+    transition: all 0.3s ease;
+}
+
+header.scrolled {
+    padding: 10px 0;
+    box-shadow: 0 4px 20px rgba(0,0,0,0.05);
+}
+
+.container {
+    width: 90%; max-width: 1400px;
+    margin: 0 auto;
+    display: flex; align-items: center; justify-content: space-between;
+}
+
+header h1 a {
+    color: #E60023;
+    font-weight: 700; font-size: 24px;
+    display: inline-block; transition: 0.4s;
+}
+
+header h1 a:hover { transform: scale(1.1) rotate(-3deg); }
+
+header ul { display: flex; gap: 5px; list-style: none; }
+
+header ul li a {
+    padding: 10px 20px;
+    border-radius: 30px;
+    font-weight: 600; color: #555;
+    transition: 0.3s; display: block; font-size: 14px;
+}
+
+header ul li a:hover {
+    background-color: #f0f0f0; color: #111;
+    transform: translateY(-2px);
+}
+
+header ul li a.active-nav { background-color: #111; color: #fff; }
+header ul li a.active-nav:hover { background-color: #333; }
+
+.nav-logout:hover {
+    background-color: #E60023 !important; color: #fff !important;
+    box-shadow: 0 4px 10px rgba(230, 0, 35, 0.2);
+}
+
+/* --- LAYOUT UMUM --- */
+.section { padding: 40px 20px; min-height: 80vh; }
+
+.box {
+    background-color: #fff; border-radius: 32px;
+    box-shadow: 0 0 20px rgba(0,0,0,0.1);
+    padding: 40px; margin: 0 auto;
+}
+
+/* Batasi lebar box untuk Login/Register */
+form .box, .section > .box:not(:has(.insta-grid)) { 
+    max-width: 480px; text-align: center;
+}
+
+/* --- FORM & TOMBOL --- */
+.input-control {
+    width: 100%; padding: 12px 20px; margin-bottom: 15px;
+    border: 2px solid #ddd; border-radius: 16px;
+    font-size: 16px; outline: none; transition: 0.3s;
+}
+.input-control:focus { border-color: #0074e8; }
+
+.btn {
+    padding: 12px 20px; background-color: #E60023; color: #fff;
+    border: none; border-radius: 24px; font-size: 16px; font-weight: 700;
+    cursor: pointer; width: 100%; display: inline-block; text-align: center;
+    transition: 0.3s;
+}
+.btn:hover { background-color: #ad081b; }
+
+/* Tombol Floating (Tambah Data) */
+.btn-floating {
+    display: inline-block; width: 60px; height: 60px;
+    line-height: 60px; padding: 0; border-radius: 50%;
+    font-size: 30px; 
+    box-shadow: 0 4px 10px rgba(230, 0, 35, 0.3);
+}
+.btn-floating:hover { transform: scale(1.1); }
+
+/* --- PROFILE PAGE STYLE --- */
+.profile-header {
+    margin-top: 20px; display: flex; padding-bottom: 30px;
+    border-bottom: 1px solid #dbdbdb;
+}
+
+.profile-left { flex: 1; display: flex; justify-content: center; padding-right: 30px; }
+
+.profile-pic-large {
+    width: 150px; height: 150px; border-radius: 50%;
+    border: 1px solid #dbdbdb; padding: 4px; overflow: hidden;
+}
+.profile-pic-large img { width: 100%; height: 100%; object-fit: cover; border-radius: 50%; }
+
+.profile-right { flex: 2; display: flex; flex-direction: column; justify-content: center; }
+
+.profile-username-bar { display: flex; align-items: center; margin-bottom: 20px; gap: 20px; }
+.username { font-size: 28px; font-weight: 300; color: #262626; }
+
+.btn-profile {
+    border: 1px solid #dbdbdb; background: transparent;
+    padding: 5px 20px; border-radius: 4px;
+    font-weight: 600; font-size: 14px; color: #262626;
+}
+.btn-profile:hover { background: #fafafa; }
+
+.settings-icon { color: #262626; cursor: pointer; }
+
+.profile-stats { display: flex; gap: 40px; margin-bottom: 20px; font-size: 16px; }
+.stat-number { font-weight: 600; }
+
+.profile-bio { font-size: 16px; }
+.bio-name { font-weight: 600; display: block; margin-bottom: 5px; }
+
+/* Responsive Profile */
+@media screen and (max-width: 768px) {
+    .profile-header { flex-direction: column; text-align: center; }
+    .profile-left { padding-right: 0; margin-bottom: 20px; }
+    .profile-pic-large { margin: 0 auto; width: 100px; height: 100px; }
+    .profile-username-bar { flex-direction: column; gap: 10px; }
+    .profile-stats { justify-content: center; gap: 20px; font-size: 14px; }
+}
+
+/* --- GRID GALERI --- */
+.insta-grid {
+    display: grid; grid-template-columns: repeat(3, 1fr);
+    gap: 3px; margin-top: 20px; padding-bottom: 50px;
+}
+.insta-card { position: relative; width: 100%; aspect-ratio: 1/1; background: #f4f4f4; }
+.insta-card img { width: 100%; height: 100%; object-fit: cover; display: block; }
+.insta-overlay {
+    position: absolute; top: 0; left: 0; width: 100%; height: 100%;
+    background: rgba(0,0,0,0.6); display: flex; justify-content: center; align-items: center;
+    opacity: 0; transition: 0.3s;
+}
+.insta-card:hover .insta-overlay { opacity: 1; }
+
+.insta-info { text-align: center; color: #fff; }
+.action-links { display: flex; gap: 10px; justify-content: center; margin-top: 10px; }
+.action-btn {
+    padding: 5px 12px; border-radius: 4px; font-size: 12px; font-weight: bold;
+}
+.btn-edit { background: #fff; color: #000; }
+.btn-del { background: #E60023; color: #fff; }
+
+/* --- MODAL POPUP --- */
+.modal-overlay {
+    display: none; position: fixed; top: 0; left: 0; width: 100%; height: 100%;
+    background: rgba(0,0,0,0.5); backdrop-filter: blur(8px);
+    z-index: 9999; justify-content: center; align-items: center;
+    opacity: 0; transition: 0.3s;
+}
+.modal-overlay.active { display: flex; opacity: 1; }
+
+.modal-box {
+    background: #fff; width: 90%; max-width: 400px; padding: 30px;
+    border-radius: 32px; text-align: center;
+    box-shadow: 0 10px 30px rgba(0,0,0,0.3);
+    transform: scale(0.8); transition: 0.3s;
+}
+.modal-overlay.active .modal-box { transform: scale(1); }
+
+.modal-title { font-size: 22px; font-weight: bold; margin-bottom: 10px; }
+.modal-desc { font-size: 16px; color: #555; margin-bottom: 25px; }
+
+/* Tombol di Modal */
+.btn-logout-confirm {
+    display: block; width: 100%; padding: 12px;
+    background: #E60023; color: #fff; border-radius: 24px;
+    border: none; font-weight: bold; margin-bottom: 10px; cursor: pointer;
+}
+.btn-delete-confirm {
+    display: block; width: 100%; padding: 12px;
+    background: #111; color: #fff; border-radius: 24px;
+    border: none; font-weight: bold; margin-bottom: 10px; cursor: pointer;
+    transition: 0.3s;
+}
+.btn-delete-confirm:hover { background: #333; }
+
+.btn-cancel, .btn-modal-cancel {
+    display: block; width: 100%; padding: 12px;
+    background: #efefef; color: #111; border-radius: 24px;
+    border: none; font-weight: bold; cursor: pointer; transition: 0.3s;
+}
+.btn-cancel:hover, .btn-modal-cancel:hover { background: #e2e2e2; }
+
+/* --- (INDEX/DASHBOARD) --- */
+.box-galeri, .masonry-container { column-count: 5; column-gap: 15px; }
+.col-4, .masonry-item { break-inside: avoid; margin-bottom: 15px; border-radius: 16px; overflow: hidden; }
+.col-4 img, .masonry-item img { width: 100%; display: block; border-radius: 16px; }
+
+@media screen and (max-width: 1024px) { .box-galeri, .masonry-container { column-count: 4; } }
+@media screen and (max-width: 800px) { .box-galeri, .masonry-container { column-count: 3; } }
+@media screen and (max-width: 600px) {
+    .box-galeri, .masonry-container { column-count: 2; }
+    .insta-grid { grid-template-columns: repeat(2, 1fr); gap: 10px; }
+}
+
+footer { padding: 20px 0; text-align: center; font-size: 14px; color: #555; margin-top: 50px; }
